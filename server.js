@@ -8,6 +8,7 @@ const manga = [
 const typeDefs = gql `
     type Query {
         dummy: String
+        getManga: [Manga]
     }
     type Manga {
         title: String
@@ -17,8 +18,15 @@ const typeDefs = gql `
     }
 `;
 
+const resolvers = {
+    Query: {
+        getManga: () => manga
+    }
+}
+
 const server = new ApolloServer({
-    typeDefs: typeDefs
+    typeDefs,
+    resolvers
 });
 
 server.listen().then(({ url }) => {
