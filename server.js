@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 
-const manga = [
+const mangaSeries = [
     { title: 'One Piece', currentAvailable: '87', currentRead: '84', completedByAuthor: false },
     { title: 'Deathnote', currentAvailable: '13', currentRead: '13', completedByAuthor: true }
 ];
@@ -8,9 +8,14 @@ const manga = [
 const typeDefs = gql `
     type Query {
         dummy: String
-        getManga: [Manga]
+        getMangaSeries: [MangaSeries]
     }
-    type Manga {
+
+    type Mutation {
+        addManga(title: String, currentAvailable: String, currentRead: String, completedByAuthor: Boolean): MangaSeries
+    }
+
+    type MangaSeries {
         title: String
         currentAvailable: String
         currentRead: String
@@ -20,7 +25,15 @@ const typeDefs = gql `
 
 const resolvers = {
     Query: {
-        getManga: () => manga
+        getMangaSeries: () => mangaSeries
+    },
+
+    Mutation: {
+        addManga: (_, { title, currentAvailable, currentRead, completedByAuthor }) => {
+            const manga = { title: title, currentAvailable: currentAvailable, currentRead: currentRead, completedByAuthor: completedByAuthor };
+            mangaSeries.push(manga);
+            return manga;
+        }
     }
 }
 
