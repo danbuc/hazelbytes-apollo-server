@@ -1,0 +1,26 @@
+{
+    "name": "hazelbytes-apollo-server",
+    "version": "1.0.0",
+    "main": "server.js",
+    "scripts": {
+        "server": "nodemon server.js",
+        "client": "cd client && npm start",
+        "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
+    },
+    "repository": "git@github.com:danbuc/hazelbytes-apollo-server.git",
+    "author": "Daniel Buchbauer <daniel@just-my-work.de>",
+    "license": "MIT",
+    "dependencies": {
+        "apollo-server": "^2.3.1",
+        "bcrypt": "^3.0.2",
+        "dotenv": "^6.2.0",
+        "graphql": "^14.0.2",
+        "jsonwebtoken": "^8.4.0",
+        "md5": "^2.2.1",
+        "mongoose": "^5.4.0"
+    },
+    "devDependencies": {
+        "concurrently": "^4.1.0",
+        "nodemon": "^1.18.9"
+    }
+}
