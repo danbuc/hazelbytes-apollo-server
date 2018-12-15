@@ -1,18 +1,16 @@
 const { ApolloServer, gql } = require('apollo-server');
+const mongoose = require('mongoose')
 
-const mangaSeries = [
-    { title: 'One Piece', currentAvailable: '87', currentRead: '84', completedByAuthor: false },
-    { title: 'Deathnote', currentAvailable: '13', currentRead: '13', completedByAuthor: true }
-];
+require('dotenv').config({ path: 'variables.env' })
+
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log('Database connected'))
+    .catch(err => console.error(err));
 
 const typeDefs = gql `
     type Query {
-        dummy: String
         getMangaSeries: [MangaSeries]
-    }
-
-    type Mutation {
-        addManga(title: String, currentAvailable: String, currentRead: String, completedByAuthor: Boolean): MangaSeries
     }
 
     type MangaSeries {
@@ -23,23 +21,8 @@ const typeDefs = gql `
     }
 `;
 
-const resolvers = {
-    Query: {
-        getMangaSeries: () => mangaSeries
-    },
-
-    Mutation: {
-        addManga: (_, { title, currentAvailable, currentRead, completedByAuthor }) => {
-            const manga = { title: title, currentAvailable: currentAvailable, currentRead: currentRead, completedByAuthor: completedByAuthor };
-            mangaSeries.push(manga);
-            return manga;
-        }
-    }
-}
-
 const server = new ApolloServer({
-    typeDefs,
-    resolvers
+    typeDefs
 });
 
 server.listen().then(({ url }) => {
