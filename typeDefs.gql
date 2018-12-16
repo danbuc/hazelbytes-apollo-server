@@ -1,5 +1,5 @@
 type Query {
-    dummy: String
+    getUser: User
 }
 
 type User {
@@ -28,4 +28,8 @@ type Message {
     messageBody: String!
     messageDate: String
     messageUser: User!
+}
+
+type Mutation {
+    signupUser(username: String!, email: String!, password: String!): User!
 }
