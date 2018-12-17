@@ -1,5 +1,5 @@
 {
-    "name": "hazelbytes-apollo-server",
+    "name": "training-apollo-server",
     "version": "1.0.0",
     "main": "server.js",
     "scripts": {
@@ -7,7 +7,7 @@
         "client": "cd client && yarn serve",
         "dev": "concurrently --names \"server,client\" \"yarn run server --silent\" \"yarn run client --silent\""
     },
-    "repository": "git@github.com:danbuc/hazelbytes-apollo-server.git",
+    "repository": "git@github.com:danbuc/training-apollo-server.git",
     "author": "Daniel Buchbauer <daniel@just-my-work.de>",
     "license": "MIT",
     "dependencies": {
