@@ -4,7 +4,7 @@
     "main": "server.js",
     "scripts": {
         "server": "nodemon server.js",
-        "client": "cd client && yarn run serve",
+        "client": "cd client && yarn serve",
         "dev": "concurrently --names \"server,client\" \"yarn run server --silent\" \"yarn run client --silent\""
     },
     "repository": "git@github.com:danbuc/hazelbytes-apollo-server.git",
