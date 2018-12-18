@@ -14,7 +14,7 @@ const Post = require('./models/Post')
 
 mongoose
     .connect(process.env.MONGO_URI)
-    .then(() => console.log('Database connected'))
+    .then(() => console.log('Database is connected'))
     .catch(err => console.error(err));
 
 
