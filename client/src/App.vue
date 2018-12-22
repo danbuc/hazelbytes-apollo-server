@@ -42,7 +42,7 @@
 
       <v-toolbar-items class="hidden-xs-only">
         <v-btn flat v-for="item in horizontalNavItems" :key="item.title" :to="item.link">
-          <v-icon class="hidden-sm-only" left>{{item.icon}}</v-icon>
+          <v-icon class="hidden-sm-only" left v-html="item.icon"></v-icon>
           {{item.title}}
         </v-btn>
       </v-toolbar-items>
@@ -95,6 +95,45 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'icomoon';
+  src:  url('assets/fonts/icomoon.eot?unov0w');
+  src:  url('assets/fonts/icomoon.eot?unov0w#iefix') format('embedded-opentype'),
+    url('assets/fonts/icomoon.ttf?unov0w') format('truetype'),
+    url('assets/fonts/icomoon.woff?unov0w') format('woff'),
+    url('assets/fonts/icomoon.svg?unov0w#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-battlenet:before {
+  content: "\e900";
+}
+.icon-gog:before {
+  content: "\e901";
+}
+.icon-ubisoft:before {
+  content: "\e902";
+}
+.icon-controller-classic:before {
+  content: "\e903";
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition-property: all;
