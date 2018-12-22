@@ -20,6 +20,10 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+
+      <v-divider class="mt-5"></v-divider>
+
+
     </v-navigation-drawer>
 
     <v-toolbar fixed color="primary" dark>
