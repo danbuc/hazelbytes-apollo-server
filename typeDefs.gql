@@ -16,7 +16,8 @@ type Post {
     title: String!
     imageUrl: String!
     categories: [String]!
-    description: String!
+    excerpt: String!
+    textBlock: [TextBlock]!
     createdDate: String
     likes: Int
     createdBy: User!
@@ -30,7 +31,13 @@ type Message {
     messageUser: User!
 }
 
+type TextBlock {
+    headline: String
+    content: String!
+    imageUrl: String
+}
+
 type Mutation {
-    addPost(title: String!, imageUrl: String!, categories: [String]!, description: String!, creatorId: ID!): Post!
+    addPost(title: String!, imageUrl: String!, categories: [String]!, excerpt: String!, creatorId: ID!): Post!
     signupUser(username: String!, email: String!, password: String!): User!
 }

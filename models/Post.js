@@ -13,10 +13,24 @@ const PostSchema = new mongoose.Schema({
         type: [String],
         required: true
     },
-    description: {
+    excerpt: {
         type: String,
         required: true
     },
+    textBlock: [{
+        headline: {
+            type: String,
+            required: false
+        },
+        content: {
+            type: String,
+            required: true
+        },
+        imageUrl: {
+            type: String,
+            required: false
+        }
+    }],
     createdDate: {
         type: Date,
         default: Date.now
