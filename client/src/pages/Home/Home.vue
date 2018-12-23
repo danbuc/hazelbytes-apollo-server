@@ -10,8 +10,8 @@
         </v-carousel-item>
       </v-carousel>
     </v-flex>
-  </div>
-  <!--  <h1>Home</h1>
+    <v-container>
+    <h1>Home</h1>
     <v-spacer></v-spacer>
     <h2>Games</h2>
     <v-btn><v-icon v-html="$vuetify.icons.steam"></v-icon> Steam</v-btn>
@@ -46,7 +46,9 @@
     <v-btn><v-icon v-html="$vuetify.icons.discord"></v-icon> Discord</v-btn>
     <v-btn><v-icon v-html="$vuetify.icons.slack"></v-icon> Slack</v-btn>
     <v-btn><v-icon v-html="$vuetify.icons.patreon"></v-icon> Patreon</v-btn>
-    <v-btn><v-icon v-html="$vuetify.icons.facebook"></v-icon> Facebook</v-btn> -->
+    <v-btn><v-icon v-html="$vuetify.icons.facebook"></v-icon> Facebook</v-btn>
+    </v-container>
+  </div>
 </template>
 
 <script>
