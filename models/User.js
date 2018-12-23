@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+const ObjectId = require('mongoose').Types.ObjectId;
+ObjectId.prototype.valueOf = function() {
+    return this.toString();
+};
+
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,

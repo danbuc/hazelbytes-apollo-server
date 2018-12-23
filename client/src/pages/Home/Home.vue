@@ -36,13 +36,46 @@
     <v-btn><v-icon v-html="$vuetify.icons.slack"></v-icon> Slack</v-btn>
     <v-btn><v-icon v-html="$vuetify.icons.patreon"></v-icon> Patreon</v-btn>
     <v-btn><v-icon v-html="$vuetify.icons.facebook"></v-icon> Facebook</v-btn>
+    <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
+    <div v-if="$apollo.loading">Loading...</div>
+    <ul v-else v-for="post in getPosts" :key="post._id">
+      <li>
+        {{post.title}}
+      </li>
+      <li>
+        {{post.imageUrl}}
+      </li>
+      <li>
+        {{post.excerpt}}
+      </li>
+    </ul>
   </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
+import { gql } from 'apollo-boost'
 
 export default {
-  name: 'home'
+  name: 'home',
+  data() {
+    return {
+      posts: []
+    }
+  },
+  apollo: {
+    getPosts: {
+      query: gql`
+        query {
+          getPosts {
+            _id
+            title
+            imageUrl
+            excerpt
+          }
+        }
+      `
+    }
+  }
 }
 </script>
