@@ -49,11 +49,11 @@
     </v-toolbar>
 
     <main>
-      <v-container class="mt-4">
+      <div>
         <transition name="fade">       
           <router-view/>
         </transition>
-      </v-container>
+      </div>
     </main>
   </v-app>
 </template>

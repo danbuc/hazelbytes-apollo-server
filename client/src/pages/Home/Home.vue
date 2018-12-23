@@ -1,6 +1,17 @@
 <template>
-  <v-container>
-    <h1>Home</h1>
+  <div v-if="getPosts">
+    <v-flex xs12>
+      <v-carousel v-bind="[{ 'cycle': true }, { 'hide-delimiters': true }, { 'height': '100vh' }]" interval="3000">
+        <v-carousel-item v-bind="{ 'height': '100vh' }" v-for="post in getPosts" :key="post._id" :src="post.imageUrl">
+          <div class="post-excerpt">
+            <h2 class="post-excerpt--title">{{post.title}}</h2>
+            <p class="post-excerpt--text">{{post.excerpt}}</p>
+          </div>
+        </v-carousel-item>
+      </v-carousel>
+    </v-flex>
+  </div>
+  <!--  <h1>Home</h1>
     <v-spacer></v-spacer>
     <h2>Games</h2>
     <v-btn><v-icon v-html="$vuetify.icons.steam"></v-icon> Steam</v-btn>
@@ -35,22 +46,7 @@
     <v-btn><v-icon v-html="$vuetify.icons.discord"></v-icon> Discord</v-btn>
     <v-btn><v-icon v-html="$vuetify.icons.slack"></v-icon> Slack</v-btn>
     <v-btn><v-icon v-html="$vuetify.icons.patreon"></v-icon> Patreon</v-btn>
-    <v-btn><v-icon v-html="$vuetify.icons.facebook"></v-icon> Facebook</v-btn>
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <div v-if="$apollo.loading">Loading...</div>
-    <ul v-else v-for="post in getPosts" :key="post._id">
-      <li>
-        {{post.title}}
-      </li>
-      <li>
-        {{post.imageUrl}}
-      </li>
-      <li>
-        {{post.excerpt}}
-      </li>
-    </ul>
-  </v-container>
+    <v-btn><v-icon v-html="$vuetify.icons.facebook"></v-icon> Facebook</v-btn> -->
 </template>
 
 <script>
@@ -74,8 +70,35 @@ export default {
             excerpt
           }
         }
-      `
+      `,
+      result({ data, loading, networkStatus }) {
+        if(!loading) {
+          this.posts = data.getPosts
+          console.log('[networkStatus]', networkStatus)
+        }
+      },
+      error(err) {
+        console.error('[Error!]', err)
+      }
     }
   }
 }
 </script>
+
+<style lang="scss">
+.post-excerpt {
+  position: absolute;
+  background-color: rgba(75, 75, 75, 0.5);
+  width: 100%;
+  padding: 1em;
+  bottom: 0;
+
+  &--title {
+    color: white;
+  }
+
+  &--text {
+    color: white;
+  }
+}
+</style>
